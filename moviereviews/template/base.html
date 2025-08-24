@@ -9,11 +9,52 @@
     }
     .navbar-custom .nav-link {
       color: white !important;
+      font-size: 20px;
       font-weight: 500;
       transition: color 0.3s;
     }
+    .navbar-custom .navbar-brand{
+        font-size: 30px;
+    }
     .navbar-custom .nav-link:hover {
       color: #ffe066 !important;
+    }
+    
+    /* Estilos para el botón de hamburguesa */
+    .navbar-toggler {
+      border: 2px solid white;
+      border-radius: 8px;
+      padding: 0.25rem 0.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .navbar-toggler:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: #ffe066;
+    }
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+    
+    /* Responsividad del navbar */
+    @media (max-width: 768px) {
+      .navbar-custom .nav-link {
+        font-size: 18px;
+        text-align: center;
+        padding: 0.5rem 1rem;
+      }
+      .navbar-custom .navbar-brand {
+        font-size: 24px;
+      }
+      .navbar-collapse {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin-top: 10px;
+        padding: 10px;
+      }
     }
     footer {
       background: #333;
@@ -34,9 +75,35 @@
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       transition: transform 0.2s ease-in-out;
+      margin-bottom: 20px;
     }
     .card:hover {
       transform: scale(1.03);
+    }
+    .card-img-top {
+      border-radius: 15px 15px 0 0;
+    }
+    
+    /* Responsividad adicional para cards */
+    @media (max-width: 576px) {
+      .card {
+        margin-bottom: 15px;
+      }
+      .card-body {
+        padding: 1rem 0.75rem;
+      }
+      .card-title {
+        font-size: 1.1rem;
+      }
+      .card-text {
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 10px;
+      }
     }
     .btn-primary {
       background: linear-gradient(45deg, #6c63ff, #4dabf7);
@@ -50,15 +117,15 @@
 
 </head>
 {% load static %}
-<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-custom">
+<nav class="navbar navbar-expand-sm bg-body-tertiary navbar-custom">
     <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'home' %}">
-            <img src="{% static 'images/home.png' %}" alt="" width="30" height="24"
+            <img src="{% static 'images/home.png' %}" alt="" width="30" height="40"
             class="d-inline-block align-text-top" />
             Movies
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">

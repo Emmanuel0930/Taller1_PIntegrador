@@ -14,28 +14,29 @@
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
     </form>
-        <p>searching for: {{ searchTerm }}</p>
-        <!-- Un card por cada película con sus correspondientes atributos -->
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-             <!-- define una fila en una cuadrícula con una columna en pantallas extra pequeñas y tres
-            columnas en pantallas grandes-->
+
+    <p>searching for: {{ searchTerm }}</p>
+
+    <!-- Cards responsivas -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 mt-3">
         {% for movie in movies %}
-            <div v-for="movie in movies" class="col">
-                <div class="card">
-                    <img src="{{ movie.img.url }}" class="card-img-top" alt="..." height="500">
-                    <div class="card-body">
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="{{ movie.img.url }}" class="card-img-top" alt="..." height="300" style="object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ movie.title }}</h5>
-                        <p class="card-text">{{ movie.description }}</p>
-                        <p class="card-text">{{ movie.genre }}</p>
-                        <p class="card-text">{{ movie.year }}</p>
+                        <p class="card-text flex-grow-1">{{ movie.description|truncatechars:80 }}</p>
+                        <p class="card-text"><small class="text-muted"><strong>Genre:</strong> {{ movie.genre }}</small></p>
+                        <p class="card-text"><small class="text-muted"><strong>Year:</strong> {{ movie.year }}</small></p>
                         {% if movie.url %}
-                        <a href="{{ movie.url }}" class="btn btn-primary">Movie Link</a>
+                        <a href="{{ movie.url }}" class="btn btn-primary mt-auto">Movie Link</a>
                         {% endif %}
                     </div>
                 </div>
             </div>
         {% endfor %}
-        </div>
+    </div>
+
     <br/>
     <h2>Join our mailing list:</h2>
     <form action="{% url 'signup' %}">
